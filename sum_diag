@@ -1,0 +1,29 @@
+from typing import List
+
+class Solution:
+    def sumDiagonal(self, N: int, M: List[List[int]]) -> int:
+        s = 0
+        for i in range(N):
+            s += M[i][i]
+            if i != N - i - 1:
+                s += M[i][N - i - 1]
+        return s
+
+# --- Read all input at once ---
+inputs = list(map(int, input().split()))
+
+# First value is number of test cases
+T = inputs[0]
+idx = 1
+
+for _ in range(T):
+    N = inputs[idx]
+    idx += 1
+    total_elements = N * N
+    flat_matrix = inputs[idx:idx + total_elements]
+    idx += total_elements
+
+    matrix = [flat_matrix[i * N:(i + 1) * N] for i in range(N)]
+
+    sol = Solution()
+    print(sol.sumDiagonal(N, matrix))
