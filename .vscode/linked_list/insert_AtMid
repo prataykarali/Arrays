@@ -1,0 +1,21 @@
+class Solution:
+    def insertInMiddle(self, head, x):
+        #code here
+        n=0
+        p=Node(x)
+        if head is None:
+            return p
+        c=head
+        while c.next is not None:
+            c=c.next
+            n+=1
+        c=head
+        mid=n//2
+        for i in range(mid):
+            c=c.next
+        p.next=c.next
+        c.next=p
+        while c is not None:
+            c=c.next
+               
+        return head
